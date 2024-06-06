@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Game Website for My GF</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fdebd0; /* Light peach */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ff6b6b; /* Red */
+            margin-bottom: 20px;
+        }
+
+        .sticker {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .sticker img {
+            width: 100px;
+            height: auto;
+            margin: 0 10px;
+            border-radius: 50%;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .game {
+            margin: 10px;
+            padding: 20px;
+            background-color: #fff;
+            border: 2px solid #57606f; /* Dark grayish blue */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 200px;
+        }
+
+        .game h2 {
+            font-size: 1.5rem;
+            color: #57606f; /* Dark grayish blue */
+            margin-bottom: 10px;
+        }
+
+        .game p {
+            font-size: 1rem;
+            color: #57606f; /* Dark grayish blue */
+            margin-bottom: 20px;
+        }
+
+        .guess-input {
+            margin-bottom: 10px;
+            padding: 5px;
+            width: 100px;
+            border: 1px solid #57606f; /* Dark grayish blue */
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .guess-button {
+            margin-bottom: 10px;
+            padding: 10px 20px;
+            background-color: #ff6b6b; /* Red */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .guess-button:hover {
+            background-color: #ff4f4f; /* Lighter red */
+        }
+
+        .result {
+            font-size: 1rem;
+            color: #57606f; /* Dark grayish blue */
+        }
+
+        .love-letter {
+            display: none;
+            background-color: #fff;
+            border: 2px solid #57606f; /* Dark grayish blue */
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .love-letter p {
+            font-size: 1rem;
+            color: #57606f; /* Dark grayish blue */
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HI! Guess the number for a surprise</h1>
+        <div class="sticker">
+            <img src="https://media.tenor.com/eiMqmu0vXz8AAAAj/kiss.gif" alt="Kiss sticker">
+            <img src="https://media.tenor.com/83rrChRnhVwAAAAj/tkthao219-quby.gif" alt="Cute sticker">
+            <img src="https://media.tenor.com/WdVF8rAL4X8AAAAj/kuromi.gif" alt="Kuromi sticker">
+            <img src="https://media.tenor.com/ogUWQq4qC_kAAAAj/cute.gif" alt="Cute sticker">
+            <img src="https://media.tenor.com/dxjj4tP3gnwAAAAj/kuromi-sanrio.gif" alt="Kuromi sticker">
+        </div>
+        <div class="game-container">
+            <div class="game">
+                <h2>Guessing Game</h2>
+                <p>Guess the number between 1 and 10!</p>
+                <input type="number" class="guess-input" id="guessInput" placeholder="Your guess">
+                <button class="guess-button" onclick="checkGuess()">Submit</button>
+                <p class="result" id="result"></p>
+            </div>
+        </div>
+        <div class="love-letter" id="loveLetter">
+           <p>
+                    Hello Cyrel,<br><br>
+
+                    I hope you are doing well right now while reading this letter. I am writing this letter to tell you what I feel formally.<br><br>
+
+                    Before, I found myself thinking about you more often than I probably should have. It was confusing because I knew we were just friends, and suddenly developing feelings seemed odd given our limited interaction, right? So, I denied my feelings and convinced myself I didn't like you. However, over time, I came to accept that I had a small crush on you—nothing wrong with that, right? I thought it would remain that way. But as time went on, I found myself mentioning you more often to my mom. Still, I brushed off my feelings, believing there was no chance, so I kept them to myself. Then, one day, I came across a strawberry Mogu-Mogu drink, and you crossed my mind out of nowhere. It made me realize my feelings were deeper than just a simple crush. I told my mom, who also noticed changes in me whenever I talked about you. She saw how my face lit up when you were the topic, and she noticed my excitement.<br><br>
+
+                    I admire your kindness, intelligence, and unwavering dedication never fails to impress me. Your presence exudes positivity, effortlessly brightening even the dullest moments. It may sound cliché, but I genuinely see you as my ray of sunshine because I enjoy every moment we spend together. Your genuine warmth and positive outlook make every interaction memorable.<br><br>
+
+                    I used to be so selfless, giving others whatever they wanted from me. This time, I will be selfish— I want you to be mine. I want to share my vulnerable self with you<br><br>
+
+                    You know those moments in life that feel like they're straight out of a movie? Well, every time I'm with you, it's like experiencing one of those magical scenes. Your laughter feels like music, your smile lights up the room, and your presence is like a gentle breeze on a warm day – it's simply enchanting.<br><br>
+
+                    Every time I think about you, it's like discovering a new melody that I can't get out of my head.
+
+            <!-- Your love letter goes here -->
+        </div>
+    </div>
+
+    <script>
+        function checkGuess() {
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            const userGuess = parseInt(document.getElementById('guessInput').value);
+            const resultElement = document.getElementById('result');
+            const loveLetter = document.getElementById('loveLetter');
+
+            if (isNaN(userGuess) || userGuess < 1 || userGuess > 10) {
+                resultElement.textContent = 'Please enter a valid number between 1 and 10!';
+            } else if (userGuess === randomNumber) {
+                resultElement.textContent = 'Congratulations! You guessed the correct number!';
+                document.querySelector('.game-container').style.display = 'none'; // Hide the game
+                loveLetter.style.display = 'block'; // Show the love letter
+            } else {
+                resultElement.textContent = `Sorry, the correct number was ${randomNumber}. Better luck next time!`;
+            }
+        }
+    </script>
+</body>
+</html>
